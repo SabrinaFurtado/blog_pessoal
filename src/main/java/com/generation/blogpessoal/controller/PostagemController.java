@@ -47,7 +47,19 @@ public class PostagemController {
 		return postagemRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}		
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable long id) {
+		Optional<Postagem> postagem = postagemRepository.findById(id);
+		
+		if(postagem.isEmpty())
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		
+		postagemRepository.deleteById(id);
 	}
+	}
+<<<<<<< HEAD
 	
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
@@ -85,5 +97,7 @@ public class PostagemController {
 		postagemRepository.deleteById(id);
 	}
 	}
+=======
+>>>>>>> b3e1f1d4095c79d54c0971302a38e796146c0899
 
 
