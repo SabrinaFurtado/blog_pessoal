@@ -88,7 +88,7 @@ public class UsuarioControllerTest {
 		assertEquals(HttpStatus.OK, corpoResposta.getStatusCode());
 	}
 	@Test
-	@DisplayName("Atualizar um Usuário")
+	@DisplayName("Mostrar todos os Usuários")
 	public void deveMostrarTodosUsuarios() {
 
 		usuarioService.cadastrarUsuario(new Usuario(0L, 
