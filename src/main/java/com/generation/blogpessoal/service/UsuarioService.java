@@ -105,4 +105,9 @@ public class UsuarioService {
         return "Bearer " + jwtService.generateToken(usuario);
     }
 
+	public static void cadastrarUsuario() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
