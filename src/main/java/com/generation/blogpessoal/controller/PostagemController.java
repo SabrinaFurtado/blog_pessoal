@@ -47,34 +47,8 @@ public class PostagemController {
 		return postagemRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-	}
-	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
-		return ResponseEntity.ok(postagemRepository.findAllByTituloContainsAllIgnoreCase(titulo));
-	}
-		
-	@PostMapping
-	public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem postagem){
-		if (temaRepository.existsById(postagem.getTema().getId())) {
-			
-			if(temaRepository.existsById(postagem.getTema().getId()))
-				return ResponseEntity.status(HttpStatus.CREATED)
-						.body(postagemRepository.save(postagem));
-		
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tema não existe!", null);
-	}
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-	}
-	@PutMapping
-	 public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
-			return postagemRepository.findById(postagem.getId())
-					.map(resposta -> ResponseEntity.status(HttpStatus.OK)
-							.body(postagemRepository.save(postagem)))
-					.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-		}
-	
-	@ResponseStatus(HttpStatus.NO_CONTENT)
+	}		
+        @ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		Optional<Postagem> postagem = postagemRepository.findById(id);
