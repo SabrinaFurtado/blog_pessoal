@@ -48,6 +48,10 @@ public class PostagemController {
 		return postagemRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+
+	}		
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+=======
 	}
 
 	@GetMapping("/titulo/{titulo}")
@@ -73,6 +77,7 @@ public class PostagemController {
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		Optional<Postagem> postagem = postagemRepository.findById(id);
