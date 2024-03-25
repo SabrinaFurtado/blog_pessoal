@@ -4,10 +4,14 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -32,6 +36,17 @@ private String texto;
 @UpdateTimestamp
 private LocalDateTime data;
 
+@ManyToOne
+@JsonIgnoreProperties("postagen")
+private Tema tema;
+
+public Tema getTema() {
+	return tema;
+}
+
+public void setTema(Tema tema) {
+	this.tema = tema;
+}
 
 public Long getId() {
 	return id;
@@ -40,7 +55,12 @@ public Long getId() {
 public void setId(Long id) {
 	this.id = id;
 }
-
+public String getTitulo() {
+	return titulo;
+}
+public void setTitulo(String titulo) {
+	this.titulo = titulo;
+}
 public String getTexto() {
 	return texto;
 }
@@ -57,13 +77,6 @@ public void setData(LocalDateTime data) {
 	this.data = data;
 }
 
-public String getTitulo() {
-	return titulo;
-}
-
-public void setTitulo(String titulo) {
-	this.titulo = titulo;
-}
 
 
 }
