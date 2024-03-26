@@ -49,9 +49,6 @@ public class PostagemController {
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
-	}		
-        @ResponseStatus(HttpStatus.NO_CONTENT)
-=======
 	}
 
 	@GetMapping("/titulo/{titulo}")
