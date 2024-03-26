@@ -1,7 +1,9 @@
 package com.generation.blogpessoal.service;
 
-import java.util.Optional;
-
+import com.generation.blogpessoal.model.Usuario;
+import com.generation.blogpessoal.model.UsuarioLogin;
+import com.generation.blogpessoal.repository.UsuarioRepository;
+import com.generation.blogpessoal.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,10 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.blogpessoal.model.UsuarioLogin;
-import com.generation.blogpessoal.model.Usuario;
-import com.generation.blogpessoal.repository.UsuarioRepository;
-import com.generation.blogpessoal.security.JwtService;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
