@@ -9,7 +9,14 @@ COPY src src
 
 RUN chmod -R 777 ./mvnw
 
-RUN ./mvnw install -DskipTests
+# Adicionando um comando para listar arquivos e diretórios
+RUN ls -la
+
+# Adicionando um comando para imprimir a versão do Maven
+RUN ./mvnw -version
+
+# Adicionando flag -X para logs detalhados de depuração
+RUN ./mvnw clean install -X -DskipTests
 
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
